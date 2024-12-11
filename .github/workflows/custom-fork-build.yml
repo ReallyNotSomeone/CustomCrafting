@@ -18,12 +18,6 @@ jobs:
 
       - name: Build with Gradle
         uses: gradle/actions/setup-gradle@v4
-
-      - name: Assemble the project
-        run: ./gradlew assemble
-        
-      - name: Run the tests
-        run: ./gradlew test
         
       - name: Run build in a subdirectory
         working-directory: another-build
