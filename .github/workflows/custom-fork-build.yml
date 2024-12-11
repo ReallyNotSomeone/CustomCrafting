@@ -15,14 +15,17 @@ jobs:
         with:
           java-version: 17
           distribution: temurin
-
-      - name: Build with Gradle
-        uses: gradle/actions/setup-gradle@v4
-        
-      - name: Run build in a subdirectory
-        working-directory: shadowJar
-        run: ./gradlew build shadowJar
-        
+          
+       - name: Setup Gradle 3.5
+         uses: gradle/actions/setup-gradle@v3
+         with:
+           gradle-version: "3.5" # Quotes required to prevent YAML converting to number
+           
+       - name: Build with Gradle 3.5
+         run: gradle build
+         with:
+           arguments: build shadowJar
+           
       - name: Get build artifact ready
         run: mkdir staging && cp build/libs/*.jar staging
 
