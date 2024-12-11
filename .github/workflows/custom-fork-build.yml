@@ -20,7 +20,8 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
         
       - name: Run build in a subdirectory
-        run: ./gradlew build
+        working-directory: shadowJar
+        run: ./gradlew build shadowJar
         
       - name: Get build artifact ready
         run: mkdir staging && cp build/libs/*.jar staging
